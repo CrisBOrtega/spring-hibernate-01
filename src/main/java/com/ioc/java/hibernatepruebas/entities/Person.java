@@ -1,21 +1,24 @@
 package com.ioc.java.hibernatepruebas.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@ToString
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "persons")
 public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
+    private String name;
+    @Column(name = "lastname")
     private String lastName;
-    @Column(name = "programming_languaje")
+    @Column(name = "programming_language")
     private String programmingLanguage;
 
 

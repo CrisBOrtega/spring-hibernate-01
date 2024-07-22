@@ -30,7 +30,16 @@ public class HibernatePruebasApplication implements CommandLineRunner {
         //List<Person> persons = repository.buscarPorNombreYLenguaje("Java" , "Andres");
         //persons.stream().forEach(System.out::println);
 
-        List<Person> persons = (List<Person>) repository.findByProgrammingLanguage("Java");
+        //List<Person> persons = (List<Person>) repository.findByProgrammingLanguage("Java");
         //persons.stream().forEach(System.out::println);
+
+        //List<Object[]> personsValue = (List<Object[]>) repository.obtenerPersonData();
+        List<Object[]> personsValue = (List<Object[]>) repository.obtenerPersonData("Java" , "Andres");
+        personsValue.stream().forEach(
+                pV -> {
+                    System.out.println(pV[0] + " es experto en " + pV[1]);
+                }
+        );
+
     }
 }

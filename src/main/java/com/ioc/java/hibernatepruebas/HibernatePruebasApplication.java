@@ -23,8 +23,14 @@ public class HibernatePruebasApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Person> persons = (List<Person>) repository.findAll();
-        persons.stream().forEach(System.out::println);
 
+        //List<Person> persons = (List<Person>) repository.findByProgrammingLanguage("Java");
+        //persons.stream().forEach(System.out::println);
+
+        //List<Person> persons = repository.buscarPorNombreYLenguaje("Java" , "Andres");
+        //persons.stream().forEach(System.out::println);
+
+        List<Person> persons = (List<Person>) repository.findByProgrammingLanguage("Java");
+        //persons.stream().forEach(System.out::println);
     }
 }

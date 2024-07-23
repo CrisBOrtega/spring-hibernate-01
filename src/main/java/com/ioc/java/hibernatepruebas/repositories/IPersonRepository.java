@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IPersonRepository extends CrudRepository<Person, Long> {
 
@@ -24,6 +25,16 @@ public interface IPersonRepository extends CrudRepository<Person, Long> {
 
     @Query("select p.name , p.programmingLanguage from Person  p where p.programmingLanguage = ?1 and p.name = ?2  ")
     List<Object[]>  obtenerPersonData(String programmingLanguage , String name );
+
+    //Metodos de objecto
+    @Query("select p from Person p where p.id=?1")
+    Optional<Person> buscarPorId(Long id);
+
+    @Query("select p from Person p where p.name like ?1%")
+    Optional<Person> buscarPorLikeName(String name);
+
+    //el metodo anterior pero declarativa con nomenclatura de nombres
+    Optional<Person> findByNameContaining(String name);
 }
 
 

@@ -24,8 +24,6 @@ public class HibernatePruebasApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
-
         findOne();
     }
 
@@ -35,13 +33,17 @@ public class HibernatePruebasApplication implements CommandLineRunner {
         //System.out.println(person);
 
         //Segunda manera
-        Person person = null;
+        /*Person person = null;
         Optional<Person> personOptional = repository.findById(1L);
         if(personOptional.isPresent()){
             person = personOptional.get();
         }
-        System.out.println(person);
+        System.out.println(person);*/
 
+        //JPA query methods: https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
+        //repository.buscarPorId(2L).ifPresent(System.out::println);
+        //repository.buscarPorLikeName("An").ifPresent(System.out::println);
+        repository.findByNameContaining("An").ifPresent(System.out::println);
 
     }
 

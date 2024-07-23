@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class HibernatePruebasApplication implements CommandLineRunner {
@@ -24,6 +25,27 @@ public class HibernatePruebasApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+
+        findOne();
+    }
+
+    public void findOne(){
+        //Primera manera
+        //Person person = repository.findById(1L).orElseThrow();
+        //System.out.println(person);
+
+        //Segunda manera
+        Person person = null;
+        Optional<Person> personOptional = repository.findById(1L);
+        if(personOptional.isPresent()){
+            person = personOptional.get();
+        }
+        System.out.println(person);
+
+
+    }
+
+    public void list(){
         //List<Person> persons = (List<Person>) repository.findByProgrammingLanguage("Java");
         //persons.stream().forEach(System.out::println);
 
@@ -40,6 +62,5 @@ public class HibernatePruebasApplication implements CommandLineRunner {
                     System.out.println(pV[0] + " es experto en " + pV[1]);
                 }
         );
-
     }
 }

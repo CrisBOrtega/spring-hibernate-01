@@ -24,7 +24,15 @@ public class HibernatePruebasApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        findOne();
+        create();
+    }
+
+    public void create(){
+        Person person = Person.builder().name("John").lastName("Bonatchon").id(null).build();
+        //objecto creado
+        Person personNew = repository.save(person);
+        System.out.println(personNew);
+
     }
 
     public void findOne(){
